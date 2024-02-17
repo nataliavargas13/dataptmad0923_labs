@@ -28,3 +28,22 @@ def my_function(X):
 X = input("What is the maximal length of the triangle side? Enter a number: ")
 
 print("The longest side possible is " + str(my_function(int(X))))
+
+
+#Refactored version
+def find_longest_side(max_length):
+    longest_side = 0
+    for x in range(5, max_length):
+        for y in range(4, max_length):
+            for z in range(3, max_length):
+                if x * x == y * y + z * z:
+                    longest_side = max(longest_side, x, y, z)
+    return longest_side
+
+def main():
+    max_length = int(input("What is the maximal length of the triangle side? Enter a number: "))
+    longest_side = find_longest_side(max_length)
+    print("The longest side possible is", longest_side)
+
+if __name__ == "__main__":
+    main()
