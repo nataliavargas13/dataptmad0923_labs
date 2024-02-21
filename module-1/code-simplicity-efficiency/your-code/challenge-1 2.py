@@ -167,3 +167,46 @@ if (not a == 'zero' and not a == 'one' and not a == 'two' and not a == 'three' a
     print("I am not able to answer this question. Check your input.")
 
 print("Thanks for using this calculator, goodbye :)")
+
+
+
+#Refactored version
+
+def word_to_number(word):
+    numbers = {'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5}
+    return numbers.get(word)
+
+def calculate(a, b, c):
+    if b == 'plus':
+        result = a + c
+        operator = '+'
+    elif b == 'minus':
+        result = a - c
+        operator = '-'
+    else:
+        return None
+
+    if 0 <= result <= 5:
+        print(f"{a} {operator} {c} equals {result}")
+    else:
+        print(f"The result is out of range.")
+
+def main():
+    print('Welcome to this calculator!')
+    a = input('Please choose your first number (zero to five): ').lower()
+    b = input('What do you want to do? plus or minus: ').lower()
+    c = input('Please choose your second number (zero to five): ').lower()
+
+    if (a not in ['zero', 'one', 'two', 'three', 'four', 'five']) or \
+            (c not in ['zero', 'one', 'two', 'three', 'four', 'five']) or \
+            (b not in ['plus', 'minus']):
+        print("I am not able to answer this question. Check your input.")
+    else:
+        num1 = word_to_number(a)
+        num2 = word_to_number(c)
+        calculate(num1, b, num2)
+
+    print("Thanks for using this calculator, goodbye :)")
+
+if __name__ == "__main__":
+    main()
